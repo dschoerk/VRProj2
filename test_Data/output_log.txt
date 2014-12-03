@@ -1,0 +1,74 @@
+Initialize engine version: 4.5.0f6 (fd4616464986)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvumdshim.dll 9.18.13.4475]
+    Renderer: NVIDIA GeForce GT 540M
+    Vendor:   NVIDIA
+    VRAM:     1994 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\Programming\VRUE_2014_SDK\VRProject\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\Programming\VRUE_2014_SDK\VRProject\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\Programming\VRUE_2014_SDK\VRProject\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\Programming\VRUE_2014_SDK\VRProject\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\Programming\VRUE_2014_SDK\VRProject\test_Data\Managed\UnityInterface.dll (this message is harmless)
+Loading E:\Programming\VRUE_2014_SDK\VRProject\test_Data\Managed\UnityInterface.dll into Unity Child Domain
+- Completed reload, in  0.057 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+Connect called: NoError
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+/VirtualHand(Clone)
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+attached to parent network
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+OnConnectedToServer()
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Avatar Test
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+/Blockman_network(Clone)
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+attached to parent network
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+/VirtualHand(Clone)
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+attached to parent network
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+NetworkGUI Setname to:player2
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Start VirtualHand
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Platform assembly: E:\Programming\VRUE_2014_SDK\VRProject\test_Data\Managed\System.dll (this message is harmless)
+Start VirtualHand
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 0.807372 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 568.
+Total: 0.776963 ms (FindLiveObjects: 0.023187 ms CreateObjectMapping: 0.016345 ms MarkObjects: 0.202983 ms  DeleteObjects: 0.022807 ms)
+
