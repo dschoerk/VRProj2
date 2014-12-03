@@ -24,7 +24,7 @@ public class CreateInstruments : MonoBehaviour {
 	void OnGUI () 
 	{
 	
-		if (Input.GetButton ("G"))  // TODO: register button G
+		if (Input.GetButton ("Guitar"))  // TODO: register button G
 		{
 			// create Guitar-Instance out of Guitar-Prefab
 			Transform guitar = Instantiate(this.GuitarPrefab) as Transform; // TODO: verify
