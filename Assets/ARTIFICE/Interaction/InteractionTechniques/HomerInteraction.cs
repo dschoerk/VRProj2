@@ -72,9 +72,9 @@ public class HomerInteraction : ObjectSelectionBase
 		line = null;
 		
         //find interaction origion game object
-        interaction_origin = GameObject.Find("InteractionOrigin");
+        interaction_origin = GameObject.Find("TrackRightShoulder");
         
-		tracker = GameObject.Find("TrackerObject");
+		tracker = GameObject.Find("TrackRightHand");
 		
 		singleSelection = false;
 		oldSelectionObjects = new Hashtable();
@@ -128,10 +128,10 @@ public class HomerInteraction : ObjectSelectionBase
 	{
 		
         // INTERACTION TECHNIQUE THINGS ------------------------------------------------
-        if (tracker.transform.parent.GetComponent<TrackMarker>().isTracked())
+        //if (tracker.transform.parent.GetComponent<TrackMarker>().isTracked())
         {
             // show hands (virtual)
-			tracker.transform.parent.GetComponent<TrackMarker>().setVisability(this.gameObject, true);
+			//tracker.transform.parent.GetComponent<TrackMarker>().setVisability(this.gameObject, true);
 			
             //get current interaction origin coordinates
             interactionOriginCoordinates = interaction_origin.transform.position;
@@ -187,10 +187,10 @@ public class HomerInteraction : ObjectSelectionBase
             } 
 
         }// close if tracked
-        else
+        //else
         {
             // make invisible
-			tracker.transform.parent.GetComponent<TrackMarker>().setVisability(this.gameObject, false);
+			//tracker.transform.parent.GetComponent<TrackMarker>().setVisability(this.gameObject, false);
         }
    
     } 
