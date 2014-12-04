@@ -67,7 +67,7 @@ public class SpawnPrefab : MonoBehaviour {
 	/// <summary>
 	/// Uses Network.Instantiate to create an Object
 	/// </summary>
-    private void SpawnNetworkObject()
+    public void SpawnNetworkObject()
     {
         //create prefab
         Network.Instantiate(playerPrefab, transform.position, transform.rotation, 0);
