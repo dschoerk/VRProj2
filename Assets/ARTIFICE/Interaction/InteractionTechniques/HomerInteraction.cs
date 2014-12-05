@@ -60,7 +60,7 @@ public class HomerInteraction : ObjectSelectionBase
 	Vector3 ray_direction;
     LineRenderer line;
 	
-	bool singleSelection;
+	public bool singleSelection;
 		
 	Hashtable oldSelectionObjects; // temp store selected object for multiselection
 	
@@ -132,6 +132,8 @@ public class HomerInteraction : ObjectSelectionBase
         // INTERACTION TECHNIQUE THINGS ------------------------------------------------
         if (hand.isTracked() && shoulder.isTracked())//tracker.transform.parent.GetComponent<TrackMarker>().isTracked())
         {
+			if(line)
+				line.enabled = true;
             // show hands (virtual)
 			//tracker.transform.parent.GetComponent<TrackMarker>().setVisability(this.gameObject, true);
 			
@@ -235,8 +237,25 @@ public class HomerInteraction : ObjectSelectionBase
 			raycastHits = Physics.RaycastAll(physicalHandCoordinates, ray_direction);
 		}
 				
+		bool deactivateInstrument = Input.GetKeyDown ("d");
+		bool activateInstrument = Input.GetKeyDown ("a");
+		Debug.Log (raycastHits.Length);
+
 		foreach(RaycastHit hit in raycastHits)
 		{
+
+			var hitObject = hit.collider.gameObject;
+			var instrument = hitObject.GetComponent<InstrumentScript>();
+
+			if(instrument != null)
+				Debug.Log ("HIT");
+
+			if(instrument != null && activateInstrument && !deactivateInstrument)
+				instrument.active = true;
+			else if(instrument != null && !activateInstrument && deactivateInstrument)
+				instrument.active = false;
+
+
 			if (isOwnerCallback())
 			{
 				GameObject collidee = hit.collider.gameObject; // the game object attached to the collider -> do not use transform.gameobject -> returns parent
