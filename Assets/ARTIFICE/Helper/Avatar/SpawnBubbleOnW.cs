@@ -45,7 +45,7 @@ public class SpawnBubbleOnW : MonoBehaviour {
 				Network.Instantiate(DropPrefab,trackerObjPos,Quaternion.identity,0);
 
 				// TEST
-				this.networkView.RPC("relocateObjectRPC", RPCMode.AllBuffered, "Bubble(Clone)");
+				//this.networkView.RPC("relocateObjectRPC", RPCMode.AllBuffered, "Bubble(Clone)");
 			}
 		}
 	}
