@@ -69,6 +69,7 @@ public class HomerInteraction : ObjectSelectionBase
     /// </summary>
     void Start()
     {   
+
 		line = null;
 		
         //find interaction origion game object
