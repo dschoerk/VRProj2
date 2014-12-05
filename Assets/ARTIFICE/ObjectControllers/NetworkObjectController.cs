@@ -95,6 +95,8 @@ public class NetworkObjectController : ObjectController
     /// <param name="info">Info of the sender</param>
     public void OnSerializeNetworkView(BitStream stream, NetworkMessageInfo info)
     {	
+		var instrumentScript = GetComponent<InstrumentScript>();
+
         if (stream.isWriting)
         {
             //Executed on the owner of the networkview; in this case the Server
@@ -125,7 +127,12 @@ public class NetworkObjectController : ObjectController
             stream.Serialize(ref g);//"Encode" it, and send it
             stream.Serialize(ref b);//"Encode" it, and send it
             stream.Serialize(ref a);//"Encode" it, and send it
-		
+
+			if(instrumentScript != null)
+			{
+				bool active = instrumentScript.active;
+				stream.Serialize(ref active);
+			}
         }
         else
         {
@@ -148,7 +155,14 @@ public class NetworkObjectController : ObjectController
 	        stream.Serialize(ref g);//"Encode" it, and send it
 	        stream.Serialize(ref b);//"Encode" it, and send it
 	        stream.Serialize(ref a);//"Encode" it, and send it
-		
+
+			if(instrumentScript != null)
+			{
+				bool active;
+				stream.Serialize(ref active);
+				instrumentScript.active = active;
+			}
+			
 				
             transform.position = posReceive;
             transform.localRotation = rot;
