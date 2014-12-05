@@ -173,7 +173,7 @@ public class NetworkObjectController : ObjectController
 				stream.Serialize(ref pitch);
 				instrumentScript.audio.pitch = pitch;
 
-				float vol = 0;
+				float vol = 1.0f;
 				stream.Serialize(ref vol);
 				instrumentScript.audio.volume = vol;
 			}

@@ -17,13 +17,16 @@ public class InstrumentScript : MonoBehaviour {
 		if (source == null)
 			return;
 
-		if(volume > 0)
-			volume -= Time.deltaTime*0.05f;
+		if(Network.isServer)
+		{
+			if(volume > 0)
+				volume -= Time.deltaTime*0.05f;
 
-		if (Input.GetKeyDown(KeyCode.Space))
-			volume = 1;
+			if (Input.GetKeyDown(KeyCode.Space))
+				volume = 1;
 
-		source.volume = volume;
+		    source.volume = volume;
+		}
 
 		if (active && !source.isPlaying) 
 			source.Play();
