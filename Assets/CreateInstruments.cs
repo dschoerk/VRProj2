@@ -35,6 +35,9 @@ public class CreateInstruments : MonoBehaviour {
 
 	private void tryToSpawn()
 	{
+		// TEST
+		return;
+
 		// try to spawn Instruments that aren't already spawned
 		// TODO: check unwanted disconnects and reset spawn-flags
 		foreach (GameObject instrument in SpawnedInstruments.Keys) 
@@ -90,7 +93,13 @@ public class CreateInstruments : MonoBehaviour {
 		// create Instrument-Instance out of Instrument-Prefab
 		if (instrumentPrefab != null)
 		{
+			// TEST
 			Transform instrument = Instantiate(instrumentPrefab) as Transform;
+			Network.Instantiate(instrumentPrefab, Vector3.zero ,Quaternion.identity, 0);
+
+			return;
+
+			//Transform instrument = Instantiate(instrumentPrefab) as Transform;
 			instrument.parent = this.transform.parent;
 			SpawnPrefab spawnScript = instrument.GetComponent<SpawnPrefab> ();
 			if (spawnScript != null)
