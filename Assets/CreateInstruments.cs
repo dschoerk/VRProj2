@@ -94,8 +94,8 @@ public class CreateInstruments : MonoBehaviour {
 		if (instrumentPrefab != null)
 		{
 			// TEST
-			Transform instrument = Instantiate(instrumentPrefab) as Transform;
-			Network.Instantiate(instrumentPrefab, Vector3.zero ,Quaternion.identity, 0);
+			//Transform instrument = Instantiate(instrumentPrefab) as Transform;
+			Network.Instantiate(instrumentPrefab, new Vector3(20,30,40) ,Quaternion.identity, 0);
 
 			return;
 
