@@ -158,7 +158,7 @@ public class NetworkObjectController : ObjectController
 
 			if(instrumentScript != null)
 			{
-				bool active;
+				bool active = false;
 				stream.Serialize(ref active);
 				instrumentScript.active = active;
 			}
