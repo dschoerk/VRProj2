@@ -63,48 +63,73 @@ public class SpawnPrefab : MonoBehaviour {
 			SpawnNetworkObject();
 		}
 	}
+
+	//private bool IsObjectInstantiated = false;
+	public void OnInstantiateObject()
+	{
+		if (spawnOnClient) 
+		{
+			//this.IsObjectInstantiated = true;
+			// TODO: verifiction of name and parent and networkview
+			string objName = this.name;
+			this.SpawnNetworkObject (objName);
+		}
+	}
+
+	/// <summary>
+	/// Uses Network.Instantiate to create an Object
+	/// </summary>
+	private void SpawnNetworkObject()
+	{
+		SpawnNetworkObject (string.Empty);
+	}
 	
 	/// <summary>
 	/// Uses Network.Instantiate to create an Object
 	/// </summary>
-    public void SpawnNetworkObject()
+    private void SpawnNetworkObject(string objName)
     {
         //create prefab
         Network.Instantiate(playerPrefab, transform.position, transform.rotation, 0);
-		this.networkView.RPC("relocateObjectRPC", RPCMode.AllBuffered);
+		this.networkView.RPC("relocateObjectRPC", RPCMode.AllBuffered, objName);
 		
 		// enable IT selection gui
 		GameObject itSelection=GameObject.Find("ITSelection");
 		if(itSelection)
 		{
 			itSelection.GetComponent<ITSelectionGUI>().enabled = true;
-		}
-		
+		}		
     }
 	
 	/// <summary>
 	///  Parents the Object with the given parent-object
 	/// </summary>
-	private void relocateObject()
+	private void relocateObject(string objName)
 	{
-		string objName="/"+playerPrefab.name+"(Clone)";
+		if (objName == string.Empty)
+			objName ="/"+playerPrefab.name+"(Clone)";
+
 		Debug.Log(objName);
 		newObj=GameObject.Find(objName);
 		
-		if((GameObject.Find(PathInHierarchy)!=null)&&(newObj!=null))
+		if ((GameObject.Find (PathInHierarchy) != null) && (newObj != null)) 
 		{
-			Debug.Log("attached to parent network");
-			Vector3 locScale=newObj.transform.localScale;
-			Vector3 locPos=newObj.transform.localPosition;
-			newObj.transform.parent=GameObject.Find(PathInHierarchy).transform;
-			newObj.transform.localScale=locScale;
-			newObj.transform.localPosition=locPos;
+			Debug.Log ("attached to parent network");
+			Vector3 locScale = newObj.transform.localScale;
+			Vector3 locPos = newObj.transform.localPosition;
+			newObj.transform.parent = GameObject.Find (PathInHierarchy).transform;
+			newObj.transform.localScale = locScale;
+			newObj.transform.localPosition = locPos;
+		} 
+		else 
+		{
+			// TODO: create appropriate Item on other client?
 		}
 	}
 	
 	[RPC]
-    public virtual void relocateObjectRPC()
+    public virtual void relocateObjectRPC(string objName)
     {
-        relocateObject();
+        relocateObject(objName);
     }
 }

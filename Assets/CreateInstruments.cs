@@ -8,31 +8,15 @@ using System.Timers;
 
 public class CreateInstruments : MonoBehaviour {
 
-	public Transform InstrumentPrefab;
+	public Transform GuitarPrefab;
+	public Transform DrumPrefab;
 
 	private Dictionary<GameObject, bool> SpawnedInstruments = new Dictionary<GameObject, bool>();
-
-	// Timer - repatly tries to spawn instruments
-	private double SpawnTestInterval = 3000; // 3 Seconds
-//	private Timer SpawnInstrumentsTimer = null;
-
 
 	// Use this for initialization
 	void Start () 
 	{	
-//		SpawnInstrumentsTimer = new Timer( SpawnTestInterval);
-//		SpawnInstrumentsTimer.Elapsed += new ElapsedEventHandler(tryToSpawn);
-//		SpawnInstrumentsTimer.Start (); // TODO: timer stop
 	}
-
-//	private void tryToSpawn(object sender, ElapsedEventArgs e)
-//	{
-//		lock (SpawnedInstruments) 
-//		{
-//			tryToSpawn ();
-//		}
-//	}
-
 
 	private DateTime TryToSpawnTime = DateTime.MinValue;
 	private readonly TimeSpan TryToSpawnTimeout = new TimeSpan (0, 0, 0, 3, 0);
@@ -41,7 +25,10 @@ public class CreateInstruments : MonoBehaviour {
 		// use timeout to avoid permanent toggle
 		if (DateTime.Now > this.TryToSpawnTime) 
 		{
-			tryToSpawn();
+			lock(SpawnedInstruments)
+			{
+				tryToSpawn();
+			}
 			this.TryToSpawnTime = DateTime.Now + this.TryToSpawnTimeout;
 		}
 	}
@@ -62,23 +49,21 @@ public class CreateInstruments : MonoBehaviour {
 					{
 						try 
 						{
-								spawnScript.SpawnNetworkObject ();
-								SpawnedInstruments [instrument] = true;
+							spawnScript.OnInstantiateObject ();
+							SpawnedInstruments [instrument] = true;
 						} 
 						catch (Exception ex) 
 						{
-							// Log
-							int i=0;
+							Debug.Log("tryToSpawn:" + ex.ToString());
 						}
 					}
 				}
 			}
 			catch(Exception ex)
 			{
-				int i=0;
+				Debug.Log("tryToSpawn:" + ex.ToString());
 			}
 		}
-
 	}
 
 	/// <summary>
@@ -86,28 +71,46 @@ public class CreateInstruments : MonoBehaviour {
 	/// OnGUI is called for rendering and handling GUI events.
 	/// </summary>
 	void OnGUI () 
-	{
-	
+	{	
 		if (Input.GetButton ("Guitar") && this.AddGuitar)  // register button G
 		{
 			// create Instrument-Instance out of Instrument-Prefab
-			if (this.InstrumentPrefab != null)
+			this.InstantiateInstrument(this.GuitarPrefab);
+		}
+		if (Input.GetButton ("Drum") && this.AddDrum)  // register button D
+		{
+			// create Instrument-Instance out of Instrument-Prefab
+			this.InstantiateInstrument(this.DrumPrefab);
+		}
+
+	}
+
+	private void InstantiateInstrument(Transform instrumentPrefab)
+	{
+		// create Instrument-Instance out of Instrument-Prefab
+		if (instrumentPrefab != null)
+		{
+			Transform instrument = Instantiate(instrumentPrefab) as Transform;
+			instrument.parent = this.transform.parent;
+			SpawnPrefab spawnScript = instrument.GetComponent<SpawnPrefab> ();
+			if (spawnScript != null)
 			{
-				Transform instrument = Instantiate(this.InstrumentPrefab) as Transform;
-				instrument.parent = this.transform.parent;
-				SpawnPrefab spawnScript = instrument.GetComponent<SpawnPrefab> ();
-				if (spawnScript != null)
+				if (spawnScript.PathInHierarchy == string.Empty)
 				{
 					if (instrument.parent == null)
 						spawnScript.PathInHierarchy = "/";
 					else
-						spawnScript.PathInHierarchy = instrument.parent.name; // TODO: verify
-					spawnScript.playerPrefab = instrument; // TODO: verify
+						spawnScript.PathInHierarchy = instrument.parent.name; 
 				}
-				lock(SpawnedInstruments)
-				{
-					SpawnedInstruments.Add(instrument.gameObject, false);
-				}
+				if (spawnScript.playerPrefab == null)
+					spawnScript.playerPrefab = instrument; 
+			}
+			lock(SpawnedInstruments)
+			{
+				SpawnedInstruments.Add(instrument.gameObject, false);
+				instrument.gameObject.name += "_" + Guid.NewGuid().ToString(); // to have a unique name
+				// immediatly try to spawn
+				tryToSpawn();
 			}
 		}
 
@@ -123,6 +126,22 @@ public class CreateInstruments : MonoBehaviour {
 			if (DateTime.Now > this.AddGuitarTime) 
 			{
 				this.AddGuitarTime = DateTime.Now + this.AddGuitarTimeout;
+				return true;
+			}
+			return false;
+		}
+	}
+
+	private DateTime AddDrumTime = DateTime.MinValue;
+	private readonly TimeSpan AddDrumTimeout = new TimeSpan (0, 0, 0, 2, 0);
+	private bool AddDrum
+	{
+		get
+		{
+			// use timeout to avoid permanent toggle
+			if (DateTime.Now > this.AddDrumTime) 
+			{
+				this.AddDrumTime = DateTime.Now + this.AddDrumTimeout;
 				return true;
 			}
 			return false;
