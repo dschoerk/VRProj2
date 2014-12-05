@@ -43,7 +43,38 @@ public class SpawnBubbleOnW : MonoBehaviour {
 				GameObject trackerObj=GameObject.Find("TrackerObject");
 				Vector3 trackerObjPos=trackerObj.transform.position;
 				Network.Instantiate(DropPrefab,trackerObjPos,Quaternion.identity,0);
+
+				// TEST
+				this.networkView.RPC("relocateObjectRPC", RPCMode.AllBuffered, "Bubble(Clone)");
 			}
 		}
 	}
+
+	#region TEST
+	/// <summary>
+	///  Parents the Object with the given parent-object
+	/// </summary>
+	private void relocateObject(string objName)
+	{
+		Debug.Log(objName);
+		GameObject newObj=GameObject.Find(objName);
+		string PathInHierarchy = "/Playground"; // TEST
+		
+		if ((GameObject.Find (PathInHierarchy) != null) && (newObj != null)) 
+		{
+			Debug.Log ("attached to parent network");
+			Vector3 locScale = newObj.transform.localScale;
+			Vector3 locPos = newObj.transform.localPosition;
+			newObj.transform.parent =  GameObject.Find (PathInHierarchy).transform;
+			newObj.transform.localScale = locScale;
+			newObj.transform.localPosition = locPos;
+		} 
+	}
+	
+	[RPC]
+	public virtual void relocateObjectRPC(string objName)
+	{
+		relocateObject(objName);
+	}
+	#endregion
 }
