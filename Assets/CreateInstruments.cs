@@ -79,14 +79,33 @@ public class CreateInstruments : MonoBehaviour {
 		if (Input.GetButton ("Guitar") && this.AddGuitar)  // register button G
 		{
 			// create Instrument-Instance out of Instrument-Prefab
-			this.InstantiateInstrument(this.GuitarPrefab);
+			if(Network.isClient)
+				this.networkView.RPC("instantiateInstrumentRpc", RPCMode.Server, GuitarPrefab.name);
+			else
+				this.InstantiateInstrument(this.GuitarPrefab);
 		}
 		if (Input.GetButton ("Drum") && this.AddDrum)  // register button D
 		{
 			// create Instrument-Instance out of Instrument-Prefab
-			this.InstantiateInstrument(this.DrumPrefab);
+			if(Network.isClient)
+				this.networkView.RPC("instantiateInstrumentRpc", RPCMode.Server, DrumPrefab.name);
+			else
+				this.InstantiateInstrument(this.DrumPrefab);
 		}
 
+	}
+
+	[RPC]
+	void instantiateInstrumentRpc(string prefabName)
+	{
+		if(prefabName == GuitarPrefab.name)
+		{
+			InstantiateInstrument(GuitarPrefab);
+		}
+		else if(prefabName == DrumPrefab.name)
+		{
+			InstantiateInstrument(DrumPrefab);
+		}
 	}
 
 	private void InstantiateInstrument(Transform instrumentPrefab)

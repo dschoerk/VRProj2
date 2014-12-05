@@ -240,7 +240,6 @@ public class HomerInteraction : ObjectSelectionBase
 				
 		bool deactivateInstrument = Input.GetKeyDown ("s");
 		bool activateInstrument = Input.GetKeyDown ("a");
-		Debug.Log (raycastHits.Length);
 
 		foreach(RaycastHit hit in raycastHits)
 		{
