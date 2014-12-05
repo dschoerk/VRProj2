@@ -35,12 +35,13 @@ public class CreateInstruments : MonoBehaviour {
 
 	private void tryToSpawn()
 	{
-		// TEST
-		return;
+//		// TEST
+//		return;
 
 		// try to spawn Instruments that aren't already spawned
 		// TODO: check unwanted disconnects and reset spawn-flags
-		foreach (GameObject instrument in SpawnedInstruments.Keys) 
+		List<GameObject> SpawnedInstrumentsKeys = new List<GameObject> (SpawnedInstruments.Keys);
+		foreach (GameObject instrument in SpawnedInstrumentsKeys)
 		{
 			try
 			{
@@ -95,11 +96,11 @@ public class CreateInstruments : MonoBehaviour {
 		{
 			// TEST
 			//Transform instrument = Instantiate(instrumentPrefab) as Transform;
-			Network.Instantiate(instrumentPrefab, new Vector3(0,20,0) ,Quaternion.identity, 0);
+			Transform instrument = Network.Instantiate(instrumentPrefab, new Vector3(0,5,0) ,Quaternion.identity, 0) as Transform;
 
 			return;
 
-			Transform instrument = Instantiate(instrumentPrefab) as Transform;
+			//Transform instrument = Instantiate(instrumentPrefab) as Transform;
 			instrument.parent = this.transform.parent;
 			SpawnPrefab spawnScript = instrument.GetComponent<SpawnPrefab> ();
 			if (spawnScript != null)
