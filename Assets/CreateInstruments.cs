@@ -99,7 +99,7 @@ public class CreateInstruments : MonoBehaviour {
 
 			return;
 
-			//Transform instrument = Instantiate(instrumentPrefab) as Transform;
+			Transform instrument = Instantiate(instrumentPrefab) as Transform;
 			instrument.parent = this.transform.parent;
 			SpawnPrefab spawnScript = instrument.GetComponent<SpawnPrefab> ();
 			if (spawnScript != null)
