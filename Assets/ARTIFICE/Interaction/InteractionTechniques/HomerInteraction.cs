@@ -40,6 +40,7 @@ public class HomerInteraction : ObjectSelectionBase
     // marker handling and 1st person view handling
     GameObject interaction_origin = null;
 	GameObject tracker= null;
+	GameObject spacemouse = null;
 	
     Vector3 interactionOriginCoordinates;
     Vector3 virtualHandCoordinates;
@@ -76,6 +77,7 @@ public class HomerInteraction : ObjectSelectionBase
         interaction_origin = GameObject.Find("TrackRightShoulder");
         
 		tracker = GameObject.Find("TrackRightHand");
+		spacemouse = GameObject.Find("Spacemouse");
 		
 		singleSelection = false;
 		oldSelectionObjects = new Hashtable();
@@ -252,6 +254,12 @@ public class HomerInteraction : ObjectSelectionBase
 			else if(instrument != null && !activateInstrument && deactivateInstrument)
 				instrument.active = false;
 
+			if(instrument != null)
+			{
+				float pitch = spacemouse.transform.position.y;
+				pitch = Mathf.Clamp(pitch, -2.0f, 2.0f);
+				instrument.audio.pitch = pitch;
+			}
 
 			if (isOwnerCallback())
 			{
