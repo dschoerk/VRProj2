@@ -10,6 +10,7 @@ public class CreateInstruments : MonoBehaviour {
 
 	public Transform GuitarPrefab;
 	public Transform DrumPrefab;
+	public Transform PianoPrefab;
 
 	private Dictionary<GameObject, bool> SpawnedInstruments = new Dictionary<GameObject, bool>();
 
@@ -92,7 +93,14 @@ public class CreateInstruments : MonoBehaviour {
 			else
 				this.InstantiateInstrument(this.DrumPrefab);
 		}
-
+		if (Input.GetButton ("Piano") && this.AddPiano)  // register button P
+		{
+			// create Instrument-Instance out of Instrument-Prefab
+			if(Network.isClient)
+				this.networkView.RPC("instantiateInstrumentRpc", RPCMode.Server, PianoPrefab.name);
+			else
+				this.InstantiateInstrument(this.PianoPrefab);
+		}
 	}
 
 	[RPC]
@@ -105,6 +113,10 @@ public class CreateInstruments : MonoBehaviour {
 		else if(prefabName == DrumPrefab.name)
 		{
 			InstantiateInstrument(DrumPrefab);
+		}
+		else if(prefabName == PianoPrefab.name)
+		{
+			InstantiateInstrument(PianoPrefab);
 		}
 	}
 
@@ -171,6 +183,22 @@ public class CreateInstruments : MonoBehaviour {
 			if (DateTime.Now > this.AddDrumTime) 
 			{
 				this.AddDrumTime = DateTime.Now + this.AddDrumTimeout;
+				return true;
+			}
+			return false;
+		}
+	}
+
+	private DateTime AddPianoTime = DateTime.MinValue;
+	private readonly TimeSpan AddPianoTimeout = new TimeSpan (0, 0, 0, 2, 0);
+	private bool AddPiano
+	{
+		get
+		{
+			// use timeout to avoid permanent toggle
+			if (DateTime.Now > this.AddPianoTime) 
+			{
+				this.AddPianoTime = DateTime.Now + this.AddPianoTimeout;
 				return true;
 			}
 			return false;
