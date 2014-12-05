@@ -247,9 +247,6 @@ public class HomerInteraction : ObjectSelectionBase
 			var hitObject = hit.collider.gameObject;
 			var instrument = hitObject.GetComponent<InstrumentScript>();
 
-			if(instrument != null)
-				Debug.Log ("HIT");
-
 			if(instrument != null && activateInstrument && !deactivateInstrument)
 				instrument.active = true;
 			else if(instrument != null && !activateInstrument && deactivateInstrument)
