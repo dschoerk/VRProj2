@@ -57,5 +57,13 @@
 			<descriptor>0</descriptor>
 		</output>
 	</gesture>
+	<gesture name="ActivateInstrument" timeout="0">
+		<input type="2">
+			<descriptor>left arm</descriptor>
+			<descriptor>at least</descriptor>
+			<descriptor>90</descriptor>
+			<descriptor>degrees</descriptor>
+		</input>
+	</gesture>
 </gestures>
 

@@ -237,7 +237,7 @@ public class HomerInteraction : ObjectSelectionBase
 			raycastHits = Physics.RaycastAll(physicalHandCoordinates, ray_direction);
 		}
 				
-		bool deactivateInstrument = Input.GetKeyDown ("d");
+		bool deactivateInstrument = Input.GetKeyDown ("s");
 		bool activateInstrument = Input.GetKeyDown ("a");
 		Debug.Log (raycastHits.Length);
 
