@@ -132,8 +132,13 @@ public class NetworkObjectController : ObjectController
 			{
 				bool active = instrumentScript.active;
 				stream.Serialize(ref active);
+
 				float pitch = instrumentScript.audio.pitch;
 				stream.Serialize(ref pitch);
+
+				float vol = instrumentScript.audio.volume;
+				stream.Serialize(ref vol);
+
 			}
         }
         else
@@ -163,9 +168,14 @@ public class NetworkObjectController : ObjectController
 				bool active = false;
 				stream.Serialize(ref active);
 				instrumentScript.active = active;
+
 				float pitch = 0;
 				stream.Serialize(ref pitch);
 				instrumentScript.audio.pitch = pitch;
+
+				float vol = 0;
+				stream.Serialize(ref vol);
+				instrumentScript.audio.volume = vol;
 			}
 			
 				

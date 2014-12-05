@@ -77,7 +77,7 @@ public class HomerInteraction : ObjectSelectionBase
         interaction_origin = GameObject.Find("TrackRightShoulder");
         
 		tracker = GameObject.Find("TrackRightHand");
-		spacemouse = GameObject.Find("Spacemouse");
+
 		
 		singleSelection = false;
 		oldSelectionObjects = new Hashtable();
@@ -254,7 +254,8 @@ public class HomerInteraction : ObjectSelectionBase
 			else if(instrument != null && !activateInstrument && deactivateInstrument)
 				instrument.active = false;
 
-			if(instrument != null)
+			spacemouse = GameObject.Find("VirtualHand(Clone)");
+			if(instrument != null && spacemouse != null)
 			{
 				float pitch = spacemouse.transform.position.y;
 				pitch = Mathf.Clamp(pitch, -2.0f, 2.0f);
