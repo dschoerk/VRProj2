@@ -13,21 +13,6 @@
 	<automaticassignment>true</automaticassignment>
 </server>
 <gestures>
-	<gesture name="Gesture 1" timeout="0">
-		<input type="0">
-			<descriptor>lean</descriptor>
-			<descriptor>forward</descriptor>
-			<descriptor>at least</descriptor>
-			<descriptor>20</descriptor>
-			<descriptor>degrees</descriptor>
-		</input>
-		<output type="0">
-			<descriptor>press</descriptor>
-			<descriptor>w</descriptor>
-			<descriptor>for</descriptor>
-			<descriptor>0</descriptor>
-		</output>
-	</gesture>
 	<gesture name="Dirigent" timeout="0">
 		<input type="1">
 			<descriptor>left wrist</descriptor>
@@ -64,6 +49,26 @@
 			<descriptor>90</descriptor>
 			<descriptor>degrees</descriptor>
 		</input>
+		<output type="0">
+			<descriptor>press</descriptor>
+			<descriptor>s</descriptor>
+			<descriptor>for</descriptor>
+			<descriptor>0</descriptor>
+		</output>
+	</gesture>
+	<gesture name="DeactivateInstrument" timeout="0">
+		<input type="2">
+			<descriptor>left arm</descriptor>
+			<descriptor>at most</descriptor>
+			<descriptor>90</descriptor>
+			<descriptor>degrees</descriptor>
+		</input>
+		<output type="0">
+			<descriptor>press</descriptor>
+			<descriptor>a</descriptor>
+			<descriptor>for</descriptor>
+			<descriptor>0</descriptor>
+		</output>
 	</gesture>
 </gestures>
 
