@@ -1,0 +1,70 @@
+Initialize engine version: 4.5.0f6 (fd4616464986)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvumdshim.dll 9.18.13.4475]
+    Renderer: NVIDIA GeForce GT 540M
+    Vendor:   NVIDIA
+    VRAM:     1994 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\Programming\VRUE_2014_SDK\VRProj2\thestageisyours_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\Programming\VRUE_2014_SDK\VRProj2\thestageisyours_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\Programming\VRUE_2014_SDK\VRProj2\thestageisyours_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\Programming\VRUE_2014_SDK\VRProj2\thestageisyours_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\Programming\VRUE_2014_SDK\VRProj2\thestageisyours_Data\Managed\UnityInterface.dll (this message is harmless)
+Loading E:\Programming\VRUE_2014_SDK\VRProj2\thestageisyours_Data\Managed\UnityInterface.dll into Unity Child Domain
+- Completed reload, in  0.055 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+LineRenderer added!
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Avatar Test
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+/KarlHeinz(Clone)
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+attached to parent network
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+OnServerInitialized: 192.168.1.108:12346
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Server called initialize: NoError
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Platform assembly: E:\Programming\VRUE_2014_SDK\VRProj2\thestageisyours_Data\Managed\System.dll (this message is harmless)
+Warning: line was null. Got component again!
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+LineRenderer destroyed!
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 2.067087 ms
+LineRenderer added!
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 903.
+Total: 0.671670 ms (FindLiveObjects: 0.030789 ms CreateObjectMapping: 0.014824 ms MarkObjects: 0.198422 ms  DeleteObjects: 0.004941 ms)
+
+Warning: line was null. Got component again!
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+LineRenderer destroyed!
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
