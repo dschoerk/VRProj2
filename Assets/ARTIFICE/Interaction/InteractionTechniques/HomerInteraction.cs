@@ -64,7 +64,8 @@ public class HomerInteraction : ObjectSelectionBase
 	public bool singleSelection;
 		
 	Hashtable oldSelectionObjects; // temp store selected object for multiselection
-	
+
+	private float lastPitchPos = 0.0f;
 
     /// <summary>
     /// </summary>
@@ -200,6 +201,8 @@ public class HomerInteraction : ObjectSelectionBase
 			//tracker.transform.parent.GetComponent<TrackMarker>().setVisability(this.gameObject, false);
         }
    
+		if (spacemouse)
+			lastPitchPos = spacemouse.transform.position.y;
     } 
 	
 	/// <summary>
@@ -207,6 +210,7 @@ public class HomerInteraction : ObjectSelectionBase
     /// </summary>
 	private void rayCast()
 	{
+
 		RaycastHit[] raycastHits = new RaycastHit[0]; // init with empty array
 		Vector3 temp_hitposition = new Vector3(0.0f, 0.0f, 0.0f);
 		
@@ -257,9 +261,9 @@ public class HomerInteraction : ObjectSelectionBase
 			spacemouse = GameObject.Find("VirtualHand(Clone)");
 			if(instrument != null && spacemouse != null)
 			{
-				float pitch = spacemouse.transform.position.y;
-				pitch = Mathf.Clamp(pitch, -2.0f, 2.0f);
-				instrument.audio.pitch = pitch;
+				float pitch = spacemouse.transform.position.y - lastPitchPos;
+				instrument.audio.pitch += pitch;
+				instrument.audio.pitch = Mathf.Clamp(instrument.audio.pitch, -2.0f, 2.0f);
 			}
 
 			if (isOwnerCallback())
