@@ -1,0 +1,24 @@
+Info
+====
+
+Selektion von Instrumenten mit der Spacemouse wird über VirtualHand vorgenommen.
+Dient der Bewegung von Instrumenten.
+
+Selektion von Instrumenten mit dem Avatar wird mit Ray vorgenommen.
+Dient der Aktivierung von Instrumenten.
+
+Tastaturkürzel:
+--------------
+Volume up: 				Space
+Activate Instrument: 	s
+Deactivate Instrument: 	a
+Create Piano: 			p
+Create drums: 			d
+Create guitar: 			g
+
+Gesten:
+------
+Dirigentengeste: 		Für Volume-up. Ansonsten wird die Lautstärke der aktiven Instrumente heruntergefahren.
+Linke Hand runter: 		Aktivieren des selektierten Instruments.
+Linke Hand rauf: 		Deaktivieren des selektierten Instruments.
+
